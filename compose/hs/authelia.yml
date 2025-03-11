@@ -32,7 +32,7 @@ services:
       - "traefik.enable=true"
       ## HTTP Routers
       - "traefik.http.routers.authelia-rtr.entrypoints=websecure"
-      - "traefik.http.routers.authelia-rtr.rule=Host(`authelia.$DOMAINNAME_HS`)"
+      - "traefik.http.routers.authelia-rtr.rule=Host(`authelia.$DOMAINNAME_$HOSTNAME`)"
       ## Middlewares
       - "traefik.http.routers.authelia-rtr.middlewares=chain-no-auth@file" # Should be chain-no-auth and not chain-authelia
       ## HTTP Services

@@ -22,7 +22,7 @@
       - "traefik.enable=true"
       ## HTTP Routers
       - "traefik.http.routers.dashy-rtr.entrypoints=https"
-      - "traefik.http.routers.dashy-rtr.rule=Host(`$DOMAINNAME_HOME_SYNOLOGY`,`www.$DOMAINNAME_HOME_SYNOLOGY`)"
+      - "traefik.http.routers.dashy-rtr.rule=Host(`$DOMAINNAME_06`,`www.$DOMAINNAME_06`)"
       ## Middlewares
       - "traefik.http.routers.dashy-rtr.middlewares=chain-oauth@file"
       ## HTTP Services

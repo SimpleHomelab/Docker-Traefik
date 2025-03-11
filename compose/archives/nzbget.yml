@@ -25,7 +25,7 @@
       - "traefik.http.routers.nzbget-rtr-bypass.priority=100"
       ## HTTP Routers Auth
       - "traefik.http.routers.nzbget-rtr.entrypoints=https"
-      - "traefik.http.routers.nzbget-rtr.rule=Host(`nzbget.$DOMAINNAME_CLOUD_SERVER`)"
+      - "traefik.http.routers.nzbget-rtr.rule=Host(`nzbget.$DOMAINNAME_04`)"
       - "traefik.http.routers.nzbget-rtr.priority=99"
       ## Middlewares
       - "traefik.http.routers.nzbget-rtr-bypass.middlewares=chain-no-auth@file"

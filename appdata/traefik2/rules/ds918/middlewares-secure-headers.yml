@@ -15,15 +15,15 @@ http:
         stsPreload: true
         forceSTSHeader: true
         # frameDeny: true #overwritten by customFrameOptionsValue
-        customFrameOptionsValue: "allow-from https:{{env "DOMAINNAME_DS918"}}" #CSP takes care of this but may be needed for organizr.
+        customFrameOptionsValue: "allow-from https:{{env "DOMAINNAME_03"}}" #CSP takes care of this but may be needed for organizr.
         contentTypeNosniff: true
         browserXssFilter: true
         # sslForceHost: true # add sslHost to all of the services
-        # sslHost: "{{env "DOMAINNAME_DS918"}}"
+        # sslHost: "{{env "DOMAINNAME_03"}}"
         referrerPolicy: "same-origin"
         # Setting contentSecurityPolicy is more secure but it can break things. Proper auth will reduce the risk.
         # the below line also breaks some apps due to 'none' - sonarr, radarr, etc.
-        # contentSecurityPolicy: "frame-ancestors '*.{{env "DOMAINNAME_DS918"}}:*';object-src 'none';script-src 'none';"
+        # contentSecurityPolicy: "frame-ancestors '*.{{env "DOMAINNAME_03"}}:*';object-src 'none';script-src 'none';"
         # Line below, featurePolicy, was deprecated in v2.5.x in favor permissionPolicy
         # featurePolicy: "camera 'none'; geolocation 'none'; microphone 'none'; payment 'none'; usb 'none'; vr 'none';"
         permissionsPolicy: "camera=(), microphone=(), geolocation=(), payment=(), usb=(), vr=()"

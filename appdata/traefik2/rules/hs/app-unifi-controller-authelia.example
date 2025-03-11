@@ -1,7 +1,7 @@
 http:
   routers:
     unifi-rtr:
-      rule: "Host(`unifi.{{env "DOMAINNAME_HS"}}`)"
+      rule: "Host(`unifi.{{env "DOMAINNAME_$HOSTNAME"}}`)"
       entryPoints:
         - websecure
       middlewares:

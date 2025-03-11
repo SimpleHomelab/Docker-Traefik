@@ -22,7 +22,7 @@ services:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.prowlarr-rtr.entrypoints=websecure"
-      - "traefik.http.routers.prowlarr-rtr.rule=Host(`prowlarr.$DOMAINNAME_HS`)"
+      - "traefik.http.routers.prowlarr-rtr.rule=Host(`prowlarr.$DOMAINNAME_$HOSTNAME`)"
       # Middlewares
       - "traefik.http.routers.prowlarr-rtr.middlewares=chain-oauth@file"
       # HTTP Services

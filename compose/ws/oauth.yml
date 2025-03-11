@@ -17,9 +17,9 @@ services:
     # command: --rule.sabnzbd.action=allow --rule.sabnzbd.rule="HeadersRegexp(`X-Forwarded-Uri`, `$SABNZBD_API_KEY`)"
     environment:
       - CONFIG=/config
-      - COOKIE_DOMAIN=$DOMAINNAME_WS
+      - COOKIE_DOMAIN=$DOMAINNAME_05
       - INSECURE_COOKIE=false
-      - AUTH_HOST=oauth.$DOMAINNAME_WS
+      - AUTH_HOST=oauth.$DOMAINNAME_05
       - URL_PATH=/_oauth
       - LOG_LEVEL=warn
       - LOG_FORMAT=text
@@ -34,7 +34,7 @@ services:
       # HTTP Routers
       - "traefik.http.routers.oauth-rtr.tls=true"
       - "traefik.http.routers.oauth-rtr.entrypoints=websecure"
-      - "traefik.http.routers.oauth-rtr.rule=Host(`oauth.$DOMAINNAME_WS`)"
+      - "traefik.http.routers.oauth-rtr.rule=Host(`oauth.$DOMAINNAME_05`)"
       # Middlewares
       - "traefik.http.routers.oauth-rtr.middlewares=chain-oauth@file"
       # HTTP Services

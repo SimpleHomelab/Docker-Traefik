@@ -2,7 +2,7 @@ http:
   middlewares:
     middlewares-oauth-external:
       forwardAuth:
-        address: "https://oauth.{{env "DOMAINNAME_HS"}}" # Make sure you have the OAuth service in a remote server
+        address: "https://oauth.{{env "DOMAINNAME_$HOSTNAME"}}" # Make sure you have the OAuth service in a remote server
         trustForwardHeader: true
         authResponseHeaders:
           - "X-Forwarded-User"

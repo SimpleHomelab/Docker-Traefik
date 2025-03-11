@@ -22,7 +22,7 @@ services:
       - "traefik.enable=true"
       ## HTTP Routers
       - "traefik.http.routers.homepage-rtr.entrypoints=websecure"
-      - "traefik.http.routers.homepage-rtr.rule=Host(`$DOMAINNAME_1`,`www.$DOMAINNAME_1`)" # Both domain.com and www.domain.com
+      - "traefik.http.routers.homepage-rtr.rule=Host(`$DOMAINNAME_01`,`www.$DOMAINNAME_01`)" # Both domain.com and www.domain.com
       ## Middlewares
       - "traefik.http.routers.homepage-rtr.middlewares=chain-no-auth@file"
       ## HTTP Services

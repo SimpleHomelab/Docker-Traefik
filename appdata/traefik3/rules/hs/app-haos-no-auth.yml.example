@@ -1,7 +1,7 @@
 http:
   routers:
     haos-rtr:
-      rule: "Host(`haos.{{env "DOMAINNAME_HS"}}`)" 
+      rule: "Host(`haos.{{env "DOMAINNAME_$HOSTNAME"}}`)" 
       entryPoints:
         - websecure
       middlewares:

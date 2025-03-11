@@ -24,7 +24,7 @@
       - "traefik.enable=true"
       ## HTTP Routers
       - "traefik.http.routers.handbrake-rtr.entrypoints=https"
-      - "traefik.http.routers.handbrake-rtr.rule=Host(`handbrake.$DOMAINNAME_CLOUD_SERVER`)"
+      - "traefik.http.routers.handbrake-rtr.rule=Host(`handbrake.$DOMAINNAME_04`)"
       ## Middlewares
       - "traefik.http.routers.handbrake-rtr.middlewares=chain-oauth@file"
       ## HTTP Services

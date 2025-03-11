@@ -20,7 +20,7 @@
   #   volumes:
   #     - $DOCKERDIR/appdata/wireguard:/etc/wireguard
   #   environment:
-  #     - WG_HOST=$DOMAINNAME_CLOUD_SERVER
+  #     - WG_HOST=$DOMAINNAME_04
   #     - PASSWORD=$WGEASY_PASSWORD
   #     # Optional:
   #     # - WG_PORT=18205 # does not work in host mode

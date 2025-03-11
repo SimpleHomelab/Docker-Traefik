@@ -9,7 +9,7 @@ services:
     profiles: ["core", "all"]
     networks:
       t2_proxy:
-        ipv4_address: 192.168.90.254 # You can specify a static IP
+        ipv4_address: 10.30.10.254 # You can specify a static IP
       socket_proxy:
     command: # CLI arguments
       - --global.checkNewVersion=true
@@ -46,10 +46,10 @@ services:
       - --entrypoints.websecure.http.tls.options=tls-opts@file
       # Add dns-cloudflare as default certresolver for all services. Also enables TLS and no need to specify on individual services
       - --entrypoints.websecure.http.tls.certresolver=dns-cloudflare
-      - --entrypoints.websecure.http.tls.domains[0].main=$DOMAINNAME_WS
-      - --entrypoints.websecure.http.tls.domains[0].sans=*.$DOMAINNAME_WS
-      - --entrypoints.websecure.http.tls.domains[1].main=$DOMAINNAME_KHUB # Pulls main cert for second domain
-      - --entrypoints.websecure.http.tls.domains[1].sans=*.$DOMAINNAME_KHUB # Pulls wildcard cert for second domain
+      - --entrypoints.websecure.http.tls.domains[0].main=$DOMAINNAME_05
+      - --entrypoints.websecure.http.tls.domains[0].sans=*.$DOMAINNAME_05
+      - --entrypoints.websecure.http.tls.domains[1].main=$DOMAINNAME_09 # Pulls main cert for second domain
+      - --entrypoints.websecure.http.tls.domains[1].sans=*.$DOMAINNAME_09 # Pulls wildcard cert for second domain
       - --providers.file.directory=/rules # Load dynamic configuration from one or more .toml or .yml files in a directory
       - --providers.file.watch=true # Only works on top level files in the rules folder
       # - --certificatesResolvers.dns-cloudflare.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory # LetsEncrypt Staging Server - uncomment when testing
@@ -71,7 +71,7 @@ services:
       # - --metrics.influxdb2.addrouterslabels=true
       # - --metrics.influxdb2.addServicesLabels=true
       # - --metrics.influxdb2.pushInterval=30s
-      # - --metrics.influxdb2.additionallabels.host=$DOMAINNAME_WS
+      # - --metrics.influxdb2.additionallabels.host=$DOMAINNAME_05
     #healthcheck:
     #  test: ["CMD", "traefik", "healthcheck", "--ping"]
     #  interval: 5s
@@ -98,7 +98,7 @@ services:
       - TZ=$TZ
       - CF_DNS_API_TOKEN_FILE=/run/secrets/cf_dns_api_token
       - HTPASSWD_FILE=/run/secrets/basic_auth_credentials # HTTP Basic Auth Credentials
-      - DOMAINNAME_WS # Passing the domain name to traefik container to be able to use the variable in rules. 
+      - DOMAINNAME_05 # Passing the domain name to traefik container to be able to use the variable in rules. 
     secrets:
       - cf_dns_api_token
       - basic_auth_credentials
@@ -107,11 +107,11 @@ services:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.traefik-rtr.entrypoints=websecure"
-      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_WS`)"
+      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_05`)"
       # Services - API
       - "traefik.http.routers.traefik-rtr.service=api@internal"
       # Healthcheck/ping
-      #- "traefik.http.routers.ping.rule=Host(`traefik.$DOMAINNAME_WS`) && Path(`/ping`)"
+      #- "traefik.http.routers.ping.rule=Host(`traefik.$DOMAINNAME_05`) && Path(`/ping`)"
       #- "traefik.http.routers.ping.tls=true"
       #- "traefik.http.routers.ping.service=ping@internal"
       # Middlewares

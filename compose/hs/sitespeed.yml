@@ -15,9 +15,9 @@ services:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.sitespeed-rtr.entrypoints=websecure"
-      - "traefik.http.routers.sitespeed-rtr.rule=Host(`sitespeed.$DOMAINNAME_HS`)"
+      - "traefik.http.routers.sitespeed-rtr.rule=Host(`sitespeed.$DOMAINNAME_$HOSTNAME`)"
       # Middlewares
-      - "traefik.http.routers.sitespeed-rtr.middlewares=chain-oauth@file"
+      #- "traefik.http.routers.sitespeed-rtr.middlewares=chain-oauth@file"
       # HTTP Services
       - "traefik.http.routers.sitespeed-rtr.service=sitespeed-svc"
       - "traefik.http.services.sitespeed-svc.loadbalancer.server.port=80"

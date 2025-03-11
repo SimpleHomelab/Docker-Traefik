@@ -56,7 +56,7 @@
       - "traefik.enable=true"
       ## HTTP Routers
       - "traefik.http.routers.transmission-vpn-rtr.entrypoints=https"
-      - "traefik.http.routers.transmission-vpn-rtr.rule=Host(`trans.$DOMAINNAME_CLOUD_SERVER`)"
+      - "traefik.http.routers.transmission-vpn-rtr.rule=Host(`trans.$DOMAINNAME_04`)"
       ## Middlewares
       - "traefik.http.routers.transmission-vpn-rtr.middlewares=middlewares-rate-limit@file"
       ## HTTP Services

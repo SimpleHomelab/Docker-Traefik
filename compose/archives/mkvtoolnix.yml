@@ -22,7 +22,7 @@
       - "traefik.enable=true"
       ## HTTP Routers
       - "traefik.http.routers.mkvtoolnix-rtr.entrypoints=https"
-      - "traefik.http.routers.mkvtoolnix-rtr.rule=Host(`mkvtoolnix.$DOMAINNAME_CLOUD_SERVER`)"
+      - "traefik.http.routers.mkvtoolnix-rtr.rule=Host(`mkvtoolnix.$DOMAINNAME_04`)"
       ## Middlewares
       - "traefik.http.routers.mkvtoolnix-rtr.middlewares=chain-oauth@file"
       ## HTTP Services

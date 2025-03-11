@@ -28,7 +28,7 @@ services:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.guacamole-rtr.entrypoints=websecure"
-      - "traefik.http.routers.guacamole-rtr.rule=Host(`guac.$DOMAINNAME_HS`)"
+      - "traefik.http.routers.guacamole-rtr.rule=Host(`guac.$DOMAINNAME_$HOSTNAME`)"
       # Middlewares
       - "traefik.http.routers.guacamole-rtr.middlewares=chain-oauth@file,add-guacamole"
       - "traefik.http.middlewares.add-guacamole.addPrefix.prefix=/guacamole"

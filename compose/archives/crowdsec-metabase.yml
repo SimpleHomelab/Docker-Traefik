@@ -17,7 +17,7 @@
       - "traefik.enable=true"
       ## HTTP Routers
       - "traefik.http.routers.csdash-rtr.entrypoints=https"
-      - "traefik.http.routers.csdash-rtr.rule=Host(`csdash.$DOMAINNAME_CLOUD_SERVER`)"
+      - "traefik.http.routers.csdash-rtr.rule=Host(`csdash.$DOMAINNAME_04`)"
       ## Middlewares
       - "traefik.http.routers.csdash-rtr.middlewares=chain-oauth@file"
       ## HTTP Services

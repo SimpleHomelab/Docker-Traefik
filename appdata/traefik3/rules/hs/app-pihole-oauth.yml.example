@@ -1,7 +1,7 @@
 http:
   routers:
     pihole-rtr:
-      rule: "Host(`pihole.{{env "DOMAINNAME_HS"}}`)" 
+      rule: "Host(`pihole.{{env "DOMAINNAME_$HOSTNAME"}}`)" 
       entryPoints:
         - websecure
       middlewares:

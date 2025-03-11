@@ -13,7 +13,7 @@
       - "traefik.enable=true"
       ## HTTP Routers
       - "traefik.http.routers.headscale-rtr.entrypoints=https"
-      - "traefik.http.routers.headscale-rtr.rule=Host(`headscale.$DOMAINNAME_SHB`)"
+      - "traefik.http.routers.headscale-rtr.rule=Host(`headscale.$DOMAINNAME_07`)"
       ## Middlewares
       #- "traefik.http.routers.headscale-rtr.middlewares=chain-no-auth@file"
       ## HTTP Services

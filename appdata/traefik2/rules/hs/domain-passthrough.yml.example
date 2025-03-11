@@ -3,7 +3,7 @@ tcp:
     synology-traefik-rtr:
       entryPoints:
         - websecure
-      rule: "HostSNIRegexp(`{{env "DOMAINNAME_DS918"}}`, `{subdomain:[a-z]+}.{{env "DOMAINNAME_DS918"}}`)"
+      rule: "HostSNIRegexp(`{{env "DOMAINNAME_03"}}`, `{subdomain:[a-z]+}.{{env "DOMAINNAME_03"}}`)"
       service: synology-traefik-svc
       tls:
         passthrough: true

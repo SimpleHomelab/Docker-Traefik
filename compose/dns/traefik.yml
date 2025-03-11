@@ -9,7 +9,7 @@ services:
     #profiles: ["core", "all"]
     networks:
       t2_proxy:
-        ipv4_address: 192.168.90.254 # You can specify a static IP
+        ipv4_address: 10.30.10.254 # You can specify a static IP
       socket_proxy:
     command: # CLI arguments
       - --global.checkNewVersion=true
@@ -45,8 +45,8 @@ services:
       - --entrypoints.https.http.tls.options=tls-opts@file
       # Add dns-cloudflare as default certresolver for all services. Also enables TLS and no need to specify on individual services
       - --entrypoints.https.http.tls.certresolver=dns-cloudflare
-      - --entrypoints.https.http.tls.domains[0].main=$DOMAINNAME_DNS
-      - --entrypoints.https.http.tls.domains[0].sans=*.$DOMAINNAME_DNS
+      - --entrypoints.https.http.tls.domains[0].main=$DOMAINNAME_08
+      - --entrypoints.https.http.tls.domains[0].sans=*.$DOMAINNAME_08
       - --providers.file.directory=/rules # Load dynamic configuration from one or more .toml or .yml files in a directory
       - --providers.file.watch=true # Only works on top level files in the rules folder
       - --certificatesResolvers.dns-cloudflare.acme.caServer=https://acme-staging-v02.api.letsencrypt.org/directory # LetsEncrypt Staging Server - uncomment when testing
@@ -82,8 +82,8 @@ services:
       - TZ=$TZ
       - CF_DNS_API_TOKEN_FILE=/run/secrets/cf_dns_api_token   
       - HTPASSWD_FILE=/run/secrets/basic_auth_credentials # HTTP Basic Auth Credentials
-      - DOMAINNAME_DNS
-      - DOMAINNAME_HS
+      - DOMAINNAME_08
+      - DOMAINNAME_$HOSTNAME
     secrets:
       - cf_dns_api_token
       - basic_auth_credentials
@@ -92,11 +92,11 @@ services:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.traefik-rtr.entrypoints=https"
-      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_DNS` )"
+      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_08` )"
       # Services - API
       - "traefik.http.routers.traefik-rtr.service=api@internal"
       # Healthcheck/ping
-      #- "traefik.http.routers.ping.rule=Host(`traefik.$DOMAINNAME_DNS`) && Path(`/ping`)"
+      #- "traefik.http.routers.ping.rule=Host(`traefik.$DOMAINNAME_08`) && Path(`/ping`)"
       #- "traefik.http.routers.ping.tls=true"
       #- "traefik.http.routers.ping.service=ping@internal"
       # Middlewares

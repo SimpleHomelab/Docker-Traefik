@@ -1,4 +1,4 @@
-########################### ANAND'S ENVIRONMENT
+########################### apps'S ENVIRONMENT
 
 # Here are my 5 Docker Hosts:
 # - Home Server (hs) - Proxmox LXC with Ubuntu Server 22.04
@@ -24,22 +24,22 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 192.168.91.0/24
+        - subnet: 10.10.10.0/24
   t2_proxy:
     name: t2_proxy
     driver: bridge
     ipam:
       config:
-        - subnet: 192.168.90.0/24
+        - subnet: 10.30.10.0/24
 
 ########################### SECRETS
 secrets:
   basic_auth_credentials:
-    file: $DOCKERDIR/secrets/basic_auth_credentials
+    file: $SECRETSDIR/basic_auth_credentials
   cf_dns_api_token:
-    file: $DOCKERDIR/secrets/cf_dns_api_token
+    file: $SECRETSDIR/cf_dns_api_token
   traefik_forward_auth:
-    file: $DOCKERDIR/secrets/traefik_forward_auth
+    file: $SECRETSDIR/traefik_forward_auth
 
 include:
   ########################### SERVICES

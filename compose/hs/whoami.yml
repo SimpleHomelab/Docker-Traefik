@@ -13,9 +13,9 @@ services:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.whoami-rtr.entrypoints=websecure"
-      - "traefik.http.routers.whoami-rtr.rule=Host(`whoami.$DOMAINNAME_HS`)"
+      - "traefik.http.routers.whoami-rtr.rule=Host(`whoami.$DOMAINNAME_$HOSTNAME`)"
       # Middlewares
-      - "traefik.http.routers.whoami-rtr.middlewares=chain-oauth@file"
+      #- "traefik.http.routers.whoami-rtr.middlewares=chain-oauth@file"
       # HTTP Services
       - "traefik.http.routers.whoami-rtr.service=whoami-svc"
       - "traefik.http.services.whoami-svc.loadbalancer.server.port=80"

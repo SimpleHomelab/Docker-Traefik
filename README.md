@@ -1,10 +1,10 @@
 # Description
 
-This is the updated docker-compose repo of all the media, home, and web server apps described on SmartHomeBeginner.com. 
+This is the updated docker-compose repo of all the media, home, and web server apps described on SmartHomeBeginner.com.
 
-## Docker Server Series:
+## Docker Server Series
 
-### Ubuntu/Debian:
+### Ubuntu/Debian
 
 <ol>
 <li><a href="https://www.smarthomebeginner.com/ultimate-docker-server-1-os-preparation/">Ultimate Docker Server: Getting Started with OS Preparation</a> <span style="color:#6b5b95">[<a href="https://youtu.be/-ZSQdJ62r-Q" target="_blank" rel="noopener">VIDEO</a>]</span> <span style="color:#50C878">[2024]</span></li>
@@ -24,19 +24,21 @@ This is the updated docker-compose repo of all the media, home, and web server a
 <li>Implementing a Backup System for Docker Traefik Stack <span style="color:#ffa400">[coming soon]</span></li>
 </ol>
 
-### Synology:
+### Synology
+
 - [Ultimate Synology NAS Docker Compose Media Server 2022](https://www.smarthomebeginner.com/synology-nas-docker-media-server-2022/)
 
-### Web Server:
+### Web Server
+
 - [WordPress on Docker with Nginx, Traefik, LE SSL, Security, and Speed](https://www.smarthomebeginner.com/wordpress-on-docker-traefik/)
 
-### Automate the Process:
+### Automate the Process
 
 - [Auto-Traefik: Dead Simple Traefik Reverse Proxy Automator for Docker](https://www.smarthomebeginner.com/auto-traefik/) [[VIDEO](https://www.youtube.com/watch?v=ePBLJTyRgdQ&list=PL1Hno7tIbSWViTyCXl9xNdXXU-1bVxIFD)]
 
 # Support My Work
 
-Documenting, writing guides, and keeping this repo update-to-date takes hundreds of hours of work. Please consider supporting my work to show your appreciation. 
+Documenting, writing guides, and keeping this repo update-to-date takes hundreds of hours of work. Please consider supporting my work to show your appreciation.
 
 ## Did this Repo help you?
 
@@ -46,12 +48,12 @@ Documenting, writing guides, and keeping this repo update-to-date takes hundreds
 
 <div style="text-align:center;margin:20px"><a href="https://www.smarthomebeginner.com/discord-github" target="_blank" rel="nofollow noopener noreferrer"><img src="https://www.smarthomebeginner.com/images/2022/05/join-discord-300x75.png" alt="" width="300" height="75" /></a></div>
 
-- Do you need support or just want to chat with like-minded people. Join our discord. 
-- The authors will try our best to help but support is not guaranteed. But you will find others who might have went through what you are going through and may be willing to pay it forward and help. 
+- Do you need support or just want to chat with like-minded people. Join our discord.
+- The authors will try our best to help but support is not guaranteed. But you will find others who might have went through what you are going through and may be willing to pay it forward and help.
 
 # Supporting Guides
 
-## Security:
+## Security
 
 - [Traefik Docker Security Best Practices](https://www.smarthomebeginner.com/traefik-docker-security-best-practices/)
 - [Crowdsec Docker Compose Guide Part 1: Powerful IPS with Firewall Bouncer](https://www.smarthomebeginner.com/crowdsec-docker-compose-1-fw-bouncer/)
@@ -61,7 +63,7 @@ Documenting, writing guides, and keeping this repo update-to-date takes hundreds
 
 For security, I implemented CrowdSec multi-server setup in 2022. From the stats, it is blocking/mitigating well over 600 intrusion attempts per day on my servers. I will cover this in a separate guide later but you will find the docker-compose CrowdSec, Traefik Bouncer, and Cloudflare Bouncer Bouncers in my repo already.
 
-## Others:
+## Others
 
 - [How to Install Docker and Docker Compose on Ubuntu 22.04 LTS](https://www.smarthomebeginner.com/install-docker-on-ubuntu-22-04/) [[VIDEO](https://youtu.be/nwFh4JBGD_0)]
 - [Cloudflare Settings for Traefik Docker: DDNS, CNAMEs, & Tweaks](https://www.smarthomebeginner.com/cloudflare-settings-for-traefik-docker/)
@@ -72,7 +74,7 @@ For security, I implemented CrowdSec multi-server setup in 2022. From the stats,
 
 ## My Setup
 
-I have 5 docker hosts. I sync all my Docker stacks using Syncthing and push the files to GitHub so I can share with the community. 
+I have 5 docker hosts. I sync all my Docker stacks using Syncthing and push the files to GitHub so I can share with the community.
 
 - **_docker-compose-hs.yml:_** Docker Compose for <u>Home Server</u> on Ubuntu Server Proxmox LXC Container.
 - **_docker-compose-mds.yml:_** Docker Compose for <u>Media/Database Server</u> on Ubuntu Server Proxmox LXC Container.
@@ -85,20 +87,21 @@ Syncing also allows me to have a backup of one system's configuration file in al
 Almost any app/service from the docker-compose files listed above can be copy-pasted to any other compose file in this repo.
 
 ## Archives
-Files and folders inside _archives_ are not actively maintained. But they may still provide a good starting point. 
+
+Files and folders inside _archives_ are not actively maintained. But they may still provide a good starting point.
 
 ## What apps are included in this stack?
 
 The apps I use are scattered around in several different docker-compose files. Click the links below for specific installation guides.
 
-Some apps are used in more than one host and some on only one. 
+Some apps are used in more than one host and some on only one.
 
 **This is not an exhaustive list**
 
 ### FRONTENDS
 
 - Traefik - Reverse Proxy
-- Nginx Proxy Manager - Reverse Proxy 
+- Nginx Proxy Manager - Reverse Proxy
 - Docker Socket Proxy - Secure Proxy for Docker API
 - [OAuth](https://www.smarthomebeginner.com/traefik-forward-auth-google-oauth-2022/) - Google OAuth 2 Forward Authentication
 - [Authelia](https://www.smarthomebeginner.com/docker-authelia-tutorial/) - Private Forward Authentication
@@ -140,7 +143,7 @@ Some apps are used in more than one host and some on only one.
 
 ### INDEXERS
 
-- NZBHydra2 - NZB meta search 
+- NZBHydra2 - NZB meta search
 - Jackett - Torrent proxy
 - Prowlarr - Torrent proxy
 
@@ -217,9 +220,9 @@ Some apps are used in more than one host and some on only one.
 - Cloudflare Companion - Automatic CNAME creation for services
 - WhoAmI - For testing.
 
-## Bash Aliases 
+## Bash Aliases
 
-I use bash_aliases to simplify starting and stopping containers/stack. Included in the repo is an example of bash_aliases I use (replace USER with your Linux username). 
+I use bash_aliases to simplify starting and stopping containers/stack. Included in the repo is an example of bash_aliases I use (replace USER with your Linux username).
 
 Download it to a known location (e.g. /home/user/docker/shared/config/). Then add the following code block to `.bashrc` file in the user's home folder.
 
@@ -228,6 +231,7 @@ if [ -f "$HOME/docker/shared/config/bash_aliases" ]; then
     . $HOME/docker/shared/config/bash_aliases
 fi
 ```
+
 Here are some example alias commands:
 
 - `dcup` - Start Docker Traefik 2 stack

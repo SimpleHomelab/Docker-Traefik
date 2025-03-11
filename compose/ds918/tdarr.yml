@@ -41,7 +41,7 @@ services:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.tdarr-rtr.entrypoints=https"
-      - "traefik.http.routers.tdarr-rtr.rule=Host(`tdarr.$DOMAINNAME_DS918`)"
+      - "traefik.http.routers.tdarr-rtr.rule=Host(`tdarr.$DOMAINNAME_03`)"
       # Middlewares
       - "traefik.http.routers.tdarr-rtr.middlewares=chain-oauth@file"
       # HTTP Services

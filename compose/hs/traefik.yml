@@ -9,7 +9,7 @@ services:
     profiles: ["core", "all"]
     networks:
       t3_proxy:
-        ipv4_address: 192.168.90.254 # You can specify a static IP
+        ipv4_address: 10.30.10.254 # You can specify a static IP
       socket_proxy:
     command: # CLI arguments
       - --global.checkNewVersion=true
@@ -23,11 +23,11 @@ services:
       - --entrypoints.web.http.redirections.entrypoint.permanent=true
       - --api=true
       - --api.dashboard=true
-      # - --api.insecure=true
+      - --api.insecure=true
       # - --ping=true
       # - --serversTransport.insecureSkipVerify=true
       # Allow these IPs to set the X-Forwarded-* headers - Cloudflare IPs: https://www.cloudflare.com/ips/
-      - --entrypoints.websecure.forwardedHeaders.trustedIPs=$CLOUDFLARE_IPS,$LOCAL_IPS
+      - --entrypoints.websecure.forwardedHeaders.trustedIPs=$CLOUDFLARE_IPS,$LOCAL_IPS,$TAILSCALE_IPS
       - --log=true
       - --log.filePath=/logs/traefik.log
       - --log.level=INFO # (Default: error) DEBUG, INFO, WARN, ERROR, FATAL, PANIC
@@ -46,10 +46,10 @@ services:
       - --entrypoints.websecure.http.tls.options=tls-opts@file
       # Add dns-cloudflare as default certresolver for all services. Also enables TLS and no need to specify on individual services
       - --entrypoints.websecure.http.tls.certresolver=dns-cloudflare
-      - --entrypoints.websecure.http.tls.domains[0].main=$DOMAINNAME_HS
-      - --entrypoints.websecure.http.tls.domains[0].sans=*.$DOMAINNAME_HS
-      - --entrypoints.websecure.http.tls.domains[1].main=$DOMAINNAME_1
-      - --entrypoints.websecure.http.tls.domains[1].sans=*.$DOMAINNAME_1
+      - --entrypoints.websecure.http.tls.domains[0].main=$DOMAINNAME_$HOSTNAME
+      - --entrypoints.websecure.http.tls.domains[0].sans=*.$DOMAINNAME_$HOSTNAME
+      - --entrypoints.websecure.http.tls.domains[1].main=$DOMAINNAME_01
+      - --entrypoints.websecure.http.tls.domains[1].sans=*.$DOMAINNAME_01
       # - --entrypoints.websecure.http.tls.domains[2].main=$DOMAINNAME_2 # Pulls main cert for third domain
       # - --entrypoints.websecure.http.tls.domains[2].sans=*.$DOMAINNAME_2 # Pulls wildcard cert for third domain
       - --providers.file.directory=/rules # Load dynamic configuration from one or more .toml or .yml files in a directory
@@ -73,7 +73,7 @@ services:
       # - --metrics.influxdb2.addrouterslabels=true
       # - --metrics.influxdb2.addServicesLabels=true
       # - --metrics.influxdb2.pushInterval=30s
-      # - --metrics.influxdb2.additionallabels.host=$DOMAINNAME_HS
+      # - --metrics.influxdb2.additionallabels.host=$DOMAINNAME_$HOSTNAME
     #healthcheck:
     #  test: ["CMD", "traefik", "healthcheck", "--ping"]
     #  interval: 5s
@@ -87,10 +87,10 @@ services:
         published: 443
         protocol: tcp
         mode: host
-      # - target: 8080 # need to enable --api.insecure=true
-      #   published: 8080
-      #   protocol: tcp
-      #   mode: host
+      - target: 8080 # need to enable --api.insecure=true
+        published: 8080
+        protocol: tcp
+        mode: host
     volumes:
       - $DOCKERDIR/appdata/traefik3/rules/$HOSTNAME:/rules # Dynamic File Provider directory
       # - /var/run/docker.sock:/var/run/docker.sock:ro # Enable if not using Socket Proxy
@@ -100,9 +100,9 @@ services:
       - TZ=$TZ
       - CF_DNS_API_TOKEN_FILE=/run/secrets/cf_dns_api_token    
       - HTPASSWD_FILE=/run/secrets/basic_auth_credentials # HTTP Basic Auth Credentials
-      - DOMAINNAME_HS # Passing the domain name to traefik container to be able to use the variable in rules. 
-      - DOMAINNAME_1 # Additional Domain variable passthrough to container
-      - DOMAINNAME_AT # Additional Domain variable passthrough to container
+      - DOMAINNAME_$HOSTNAME # Passing the domain name to traefik container to be able to use the variable in rules. 
+      - DOMAINNAME_00 # Additional Domain variable passthrough to container
+      - DOMAINNAME_01 # Additional Domain variable passthrough to container
     secrets:
       - cf_dns_api_token
       - basic_auth_credentials
@@ -111,15 +111,15 @@ services:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.traefik-rtr.entrypoints=websecure"
-      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_HS`)"
+      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_$HOSTNAME`)"
       # Services - API
       - "traefik.http.routers.traefik-rtr.service=api@internal"
       # Healthcheck/ping
-      #- "traefik.http.routers.ping.rule=Host(`traefik.$DOMAINNAME_HS`) && Path(`/ping`)"
+      #- "traefik.http.routers.ping.rule=Host(`traefik.$DOMAINNAME_$HOSTNAME`) && Path(`/ping`)"
       #- "traefik.http.routers.ping.tls=true"
       #- "traefik.http.routers.ping.service=ping@internal"
       # Middlewares
-      # - "traefik.http.routers.traefik-rtr.middlewares=chain-no-auth@file" # For No Authentication
+      #- "traefik.http.routers.traefik-rtr.middlewares=chain-no-auth@file" # For No Authentication
       #- "traefik.http.routers.traefik-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
-      - "traefik.http.routers.traefik-rtr.middlewares=chain-oauth@file" # For Google OAuth
+      #- "traefik.http.routers.traefik-rtr.middlewares=chain-oauth@file" # For Google OAuth
       #- "traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file" # For Authelia Authentication

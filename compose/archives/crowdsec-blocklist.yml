@@ -15,7 +15,7 @@
       - "traefik.enable=true"
       ## HTTP Routers
       - "traefik.http.routers.crowdsec-blocklist-rtr.entrypoints=https"
-      - "traefik.http.routers.crowdsec-blocklist-rtr.rule=Host(`blocklist.$DOMAINNAME_SHB`)" # https://domain.com/security/blocklist
+      - "traefik.http.routers.crowdsec-blocklist-rtr.rule=Host(`blocklist.$DOMAINNAME_07`)" # https://domain.com/security/blocklist
       ## Middlewares
       - "traefik.http.routers.crowdsec-blocklist-rtr.middlewares=chain-oauth@file"
       ## HTTP Services

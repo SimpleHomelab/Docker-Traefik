@@ -20,4 +20,4 @@ services:
     volumes:
       - $DOCKERDIR/appdata/adguardhome/conf:/opt/adguardhome/conf
       - $DOCKERDIR/appdata/adguardhome/work:/opt/adguardhome/work
-      # - $DOCKERDIR/shared/certs/$DOMAINNAME_SHB:/certs # optional: if you have your own SSL certs
+      # - $DOCKERDIR/shared/certs/$DOMAINNAME_07:/certs # optional: if you have your own SSL certs

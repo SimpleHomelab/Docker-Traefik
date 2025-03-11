@@ -4,7 +4,7 @@ tcp:
       entryPoints:
         - websecure
       # rule: "HostSNIRegexp(`example.com`) || HostSNIRegexp(`{subdomain:[a-z]+}.example.com`)"
-      rule: "HostSNIRegexp(`{{env "DOMAINNAME_DS918"}}`) || HostSNIRegexp(`{subdomain:[a-z]+}.{{env "DOMAINNAME_DS918"}}`)"
+      rule: "HostSNIRegexp(`{{env "DOMAINNAME_03"}}`) || HostSNIRegexp(`{subdomain:[a-z]+}.{{env "DOMAINNAME_03"}}`)"
       service: synology-traefik-svc
       tls:
         passthrough: true
@@ -12,4 +12,4 @@ tcp:
     synology-traefik-svc:
       loadBalancer:
         servers:
-          - address: "192.168.1.254:443"
+          - address: "10.30.10.254:443"

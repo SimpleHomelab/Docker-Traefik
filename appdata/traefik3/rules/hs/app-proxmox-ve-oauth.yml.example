@@ -1,7 +1,7 @@
 http:
   routers:
     proxmox-rtr:
-      rule: "Host(`pve.{{env "DOMAINNAME_HS"}}`)"
+      rule: "Host(`pve.{{env "DOMAINNAME_$HOSTNAME"}}`)"
       entryPoints:
         - websecure
       middlewares:

@@ -1,7 +1,7 @@
 http:
   routers:
     synology-rtr:
-      rule: "Host(`dsm.{{env "DOMAINNAME_DS918"}}`)"
+      rule: "Host(`dsm.{{env "DOMAINNAME_03"}}`)"
       entryPoints:
         - https
       middlewares:

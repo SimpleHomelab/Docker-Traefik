@@ -8,6 +8,6 @@ http:
         stsIncludeSubdomains: true
         stsPreload: true
         #frameDeny: true # Popups like plugin details etc. wont't open with this. 
-        customFrameOptionsValue: "allow-from https:{{env "DOMAINNAME_WS"}}" 
+        customFrameOptionsValue: "allow-from https:{{env "DOMAINNAME_05"}}" 
         contentTypeNosniff: true
         browserXssFilter: true

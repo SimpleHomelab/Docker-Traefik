@@ -23,7 +23,7 @@
       - "traefik.enable=true"
       ## HTTP Routers
       - "traefik.http.routers.unmanic-rtr.entrypoints=https"
-      - "traefik.http.routers.unmanic-rtr.rule=Host(`unmaic.$DOMAINNAME_HOME_SYNOLOGY`)"
+      - "traefik.http.routers.unmanic-rtr.rule=Host(`unmaic.$DOMAINNAME_06`)"
       ## Middlewares
       - "traefik.http.routers.unmanic-rtr.middlewares=chain-oauth@file"
       ## HTTP Services

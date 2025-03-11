@@ -1,7 +1,7 @@
 http:
   routers:
     adguard-rtr:
-      rule: "Host(`ag.{{env "DOMAINNAME_HS"}}`)"
+      rule: "Host(`ag.{{env "DOMAINNAME_$HOSTNAME"}}`)"
       entryPoints:
         - websecure
       middlewares:

@@ -9,8 +9,8 @@ After=network-online.target
 Type=notify
 ExecStart=/usr/bin/rclone mount ds918: /media/rclone/ds918 \
 #--read-only \
---config /home/anand/docker/appdata/rclone/rclone.conf \
---log-file=/home/anand/docker/logs/hs/rclone-ds918.log \
+--config /home/apps/docker/appdata/rclone/rclone.conf \
+--log-file=/home/apps/docker/logs/hs/rclone-ds918.log \
 --log-level NOTICE \
 --allow-other \
 --no-modtime \
@@ -36,8 +36,8 @@ ExecStart=/usr/bin/rclone mount ds918: /media/rclone/ds918 \
 ExecStop=/bin/fusermount -uz /media/rclone/ds918
 ExecStartPost=/usr/bin/rclone rc vfs/refresh recursive=true --rc-addr :5572 _async=true
 Restart=on-abort
-User=anand
-Group=anand
+User=apps
+Group=apps
 KillMode=mixed
 RestartSec=5
 

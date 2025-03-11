@@ -28,28 +28,28 @@ services:
       - "traefik.enable=true"
       # HTTP Routers SHB (WordPress) Auth
       - "traefik.http.routers.nginx-shb-auth-rtr.entrypoints=websecure"
-      - "traefik.http.routers.nginx-shb-auth-rtr.rule=Host(`www.$DOMAINNAME_WS`) && Path(`/wp-login.php`)" # crowdsec
+      - "traefik.http.routers.nginx-shb-auth-rtr.rule=Host(`www.$DOMAINNAME_05`) && Path(`/wp-login.php`)" # crowdsec
       - "traefik.http.routers.nginx-shb-auth-rtr.priority=100"
       # HTTP Routers SHB (WordPress) Bypass
       - "traefik.http.routers.nginx-shb-rtr.entrypoints=websecure"
-      - "traefik.http.routers.nginx-shb-rtr.rule=Host(`$DOMAINNAME_WS`) || Host(`www.$DOMAINNAME_WS`)" # no crowdsec
+      - "traefik.http.routers.nginx-shb-rtr.rule=Host(`$DOMAINNAME_05`) || Host(`www.$DOMAINNAME_05`)" # no crowdsec
       - "traefik.http.routers.nginx-shb-rtr.priority=99"
       # HTTP Routers SHB Beta (WordPress)
       - "traefik.http.routers.nginx-shb-beta-rtr.entrypoints=websecure"
-      - "traefik.http.routers.nginx-shb-beta-rtr.rule=Host(`beta.$DOMAINNAME_WS`)"
+      - "traefik.http.routers.nginx-shb-beta-rtr.rule=Host(`beta.$DOMAINNAME_05`)"
       # HTTP Routers DASH (non-WordPress)
       - "traefik.http.routers.nginx-dash-rtr.entrypoints=websecure"
-      - "traefik.http.routers.nginx-dash-rtr.rule=Host(`dash.$DOMAINNAME_WS`)" # crowdsec
+      - "traefik.http.routers.nginx-dash-rtr.rule=Host(`dash.$DOMAINNAME_05`)" # crowdsec
       # HTTP Routers KHUB (non-WordPress)
       - "traefik.http.routers.nginx-khub-rtr.entrypoints=websecure"
-      - "traefik.http.routers.nginx-khub-rtr.rule=Host(`$DOMAINNAME_KHUB`) || Host(`www.$DOMAINNAME_KHUB`)"
+      - "traefik.http.routers.nginx-khub-rtr.rule=Host(`$DOMAINNAME_09`) || Host(`www.$DOMAINNAME_09`)"
       # Redirect shb non-www to www middleware
-      - "traefik.http.middlewares.shb-redirect.redirectregex.regex=^https?://$DOMAINNAME_WS/(.*)"
-      - "traefik.http.middlewares.shb-redirect.redirectregex.replacement=https://www.$DOMAINNAME_WS/$${1}"
+      - "traefik.http.middlewares.shb-redirect.redirectregex.regex=^https?://$DOMAINNAME_05/(.*)"
+      - "traefik.http.middlewares.shb-redirect.redirectregex.replacement=https://www.$DOMAINNAME_05/$${1}"
       - "traefik.http.middlewares.shb-redirect.redirectregex.permanent=true"
       # Redirect khub non-www to www middleware
-      - "traefik.http.middlewares.khub-redirect.redirectregex.regex=^https?://$DOMAINNAME_KHUB/(.*)"
-      - "traefik.http.middlewares.khub-redirect.redirectregex.replacement=https://www.$DOMAINNAME_KHUB/$${1}"
+      - "traefik.http.middlewares.khub-redirect.redirectregex.regex=^https?://$DOMAINNAME_09/(.*)"
+      - "traefik.http.middlewares.khub-redirect.redirectregex.replacement=https://www.$DOMAINNAME_09/$${1}"
       - "traefik.http.middlewares.khub-redirect.redirectregex.permanent=true"
       # Middlewares
       - "traefik.http.routers.nginx-khub-rtr.middlewares=khub-redirect,chain-no-auth@file"

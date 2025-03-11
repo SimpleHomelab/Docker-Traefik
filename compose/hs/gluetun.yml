@@ -39,7 +39,7 @@ services:
       - "traefik.enable=true"
       # HTTP Routers
       - "traefik.http.routers.gluetun-qbittorrent-rtr.entrypoints=websecure"
-      - "traefik.http.routers.gluetun-qbittorrent-rtr.rule=Host(`qbit.$DOMAINNAME_HS`)" # qBittorrent
+      - "traefik.http.routers.gluetun-qbittorrent-rtr.rule=Host(`qbit.$DOMAINNAME_$HOSTNAME`)" # qBittorrent
       # Middlewares
       - "traefik.http.routers.gluetun-qbittorrent-rtr.middlewares=chain-oauth@file" # qBittorrent
       # HTTP Services

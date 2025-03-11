@@ -1,7 +1,7 @@
 http:
   routers:
     splex-rtr:
-      rule: "Host(`splex.{{env "DOMAINNAME_HS"}}`)"
+      rule: "Host(`splex.{{env "DOMAINNAME_$HOSTNAME"}}`)"
       entryPoints:
         - websecure
       middlewares:

@@ -2,7 +2,7 @@ http:
   middlewares:
     middlewares-authelia:
       forwardAuth:
-        address: "http://authelia:9091/api/verify?rd=https://authelia.{{env "DOMAINNAME_HS"}}"
+        address: "http://authelia:9091/api/verify?rd=https://authelia.{{env "DOMAINNAME_$HOSTNAME"}}"
         trustForwardHeader: true
         authResponseHeaders:
           - "Remote-User"

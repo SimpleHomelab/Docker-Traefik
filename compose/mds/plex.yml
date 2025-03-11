@@ -35,7 +35,7 @@ services:
       PLEX_CLAIM_FILE: /run/secrets/plex_claim
       PLEX_UID: $PUID
       PLEX_GID: $PGID
-      ADVERTISE_IP: "http://$MEDIASERVER_IP:32400/,http://$ZEROTIER_IP_MEDIASERVER:32400/,https://proxplex.$DOMAINNAME_HS"
+      ADVERTISE_IP: "http://$MEDIASERVER_IP:32400/,http://$ZEROTIER_IP_MEDIASERVER:32400/,https://proxplex.$DOMAINNAME_$HOSTNAME"
       ALLOWED_NETWORKS: $LOCAL_IPS
     secrets:
       - plex_claim

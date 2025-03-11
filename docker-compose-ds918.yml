@@ -1,6 +1,6 @@
 version: "3.9"
 
-########################### ANAND'S ENVIRONMENT
+########################### apps'S ENVIRONMENT
 
 # Here are my 5 Docker Hosts:
 # - Home Server (hs) - Proxmox LXC with Ubuntu Server 22.04
@@ -25,13 +25,13 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 192.168.91.0/24
+        - subnet: 10.10.10.0/24
   t2_proxy:
     name: t2_proxy
     driver: bridge
     ipam:
       config:
-        - subnet: 192.168.90.0/24
+        - subnet: 10.30.10.0/24
   dockervlan:
     name: dockervlan
     driver: macvlan
@@ -46,15 +46,15 @@ networks:
 ########################### SECRETS
 secrets:
   basic_auth_credentials:
-    file: $DOCKERDIR/secrets/basic_auth_credentials
+    file: $SECRETSDIR/basic_auth_credentials
   cf_dns_api_token:
-    file: $DOCKERDIR/secrets/cf_dns_api_token
+    file: $SECRETSDIR/cf_dns_api_token
   traefik_forward_auth:
-    file: $DOCKERDIR/secrets/traefik_forward_auth
+    file: $SECRETSDIR/traefik_forward_auth
   mysql_root_password:
-    file: $DOCKERDIR/secrets/mysql_root_password
+    file: $SECRETSDIR/mysql_root_password
   plex_claim:
-    file: $DOCKERDIR/secrets/plex_claim
+    file: $SECRETSDIR/plex_claim
 
 # Docker Compose v2.20 or greater required to use "include"
 include:

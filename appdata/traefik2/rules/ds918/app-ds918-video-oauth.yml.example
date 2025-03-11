@@ -1,7 +1,7 @@
 http:
   routers:
     synology-video-rtr:
-      rule: "Host(`video.{{env "DOMAINNAME_DS918"}}`)"
+      rule: "Host(`video.{{env "DOMAINNAME_03"}}`)"
       entryPoints:
         - https
       middlewares:
